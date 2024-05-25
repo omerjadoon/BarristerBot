@@ -1,9 +1,11 @@
 "use client";
 
 import { useChat } from "ai/react";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
 import { insertDataIntoMessages } from "../transform";
+import TextToSpeech from "../text_to_speech";
+import SpeechToText from "../speech_to_text";
 
 
 export default function SideSection() {
@@ -27,6 +29,9 @@ export default function SideSection() {
     return insertDataIntoMessages(messages, data);
   }, [messages, data]);
 
+  const [text, setText] = useState<string>('This is the initial text passed from the parent component.');
+  const [transcript, setTranscript] = useState('');
+
   return (
     <div className="space-y-4 w-2/6">
       
@@ -46,6 +51,9 @@ export default function SideSection() {
         </a>
 
         <h1>Let's talk law. Tell BarristerBot what's happening.</h1>
+        {/* <TextToSpeech initialText={text} /> */}
+        <SpeechToText onTranscript={setTranscript} />
+            <TextToSpeech initialText={transcript} />
     </div>
   );
 }
