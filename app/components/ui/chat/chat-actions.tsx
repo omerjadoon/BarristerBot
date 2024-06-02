@@ -22,6 +22,7 @@ export default function ChatActions(
           <RefreshCw className="mr-2 h-4 w-4" />
           Regenerate
         </Button>
+        
       )}
     </div>
   );

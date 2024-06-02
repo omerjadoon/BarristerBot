@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../button";
 import FileUploader from "../file-uploader";
 import { Input } from "../input";
@@ -19,6 +19,46 @@ export default function ChatInput(
   },
 ) {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
+
+  const [isListening, setIsListening] = useState(false);
+  const [transcript, setTranscript] = useState('');
+
+  useEffect(() => {
+
+    const recognition = new ((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition)();
+
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.lang = 'en-US';
+
+    recognition.onresult = (event: any) => { 
+        let finalTranscript = ''; 
+        let interimTranscript = ''; 
+        for (let i = event.resultIndex; i < event.results.length; i++) 
+            { const transcriptPart = event.results[i][0].transcript; 
+                if (event.results[i].isFinal) { finalTranscript += transcriptPart; } 
+                else { interimTranscript += transcriptPart; } } 
+        
+        setTranscript(prev => prev + finalTranscript); };  
+
+
+    // recognition.onresult = async function(event:any) {
+    //     const transcript = event.results[0][0].transcript;
+    //     console.log('transcript', transcript);
+    //     setTranscript(transcript)
+    //   }
+
+    if (isListening) {
+        recognition.start();
+    } else {
+        recognition.stop();
+    }
+
+    return () => {
+        recognition.stop();
+    };
+}, [isListening]);
+
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     if (imageUrl) {
@@ -71,10 +111,15 @@ export default function ChatInput(
           value={props.input}
           onChange={props.handleInputChange}
         />
-        <FileUploader
+        {/* <FileUploader
           onFileUpload={handleUploadFile}
           onFileError={props.onFileError}
-        />
+        /> */}
+
+        <button onClick={() => setIsListening(prev => !prev)}>
+            {isListening ? 'Stop Listening' : 'Start Listening'}
+        </button>
+
         <Button type="submit" disabled={props.isLoading}>
           Send message
         </Button>

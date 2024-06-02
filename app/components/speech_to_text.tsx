@@ -16,7 +16,9 @@ const SpeechToText: React.FC<{ onTranscript: (text: string) => void }> = ({ onTr
             let finalTranscript = ''; 
             let interimTranscript = ''; 
             for (let i = event.resultIndex; i < event.results.length; i++) 
-                { const transcriptPart = event.results[i][0].transcript; if (event.results[i].isFinal) { finalTranscript += transcriptPart; } else { interimTranscript += transcriptPart; } } 
+                { const transcriptPart = event.results[i][0].transcript; 
+                    if (event.results[i].isFinal) { finalTranscript += transcriptPart; } 
+                    else { interimTranscript += transcriptPart; } } 
             
             setTranscript(prev => prev + finalTranscript); onTranscript(transcript + finalTranscript + interimTranscript); };  
 

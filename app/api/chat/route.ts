@@ -1,5 +1,5 @@
 import { StreamingTextResponse } from 'ai';
-import { ChatMessage, MessageContent, OpenAI, TogetherLLM } from 'llamaindex';
+import { ChatMessage, MessageContent, OpenAI, TogetherLLM, MessageType } from 'llamaindex';
 import { NextRequest, NextResponse } from 'next/server';
 import { createChatEngine } from './engine';
 import { LlamaIndexStream } from './llamaindex-stream';
@@ -48,6 +48,15 @@ export async function POST(request: NextRequest) {
     });
 
     const chatEngine = await createChatEngine(llm);
+
+    // Define system prompt with correct type
+    const systemPrompt: ChatMessage = {
+      role: 'system' as MessageType,
+      content: 'You are a knowledgeable and experienced lawyer whose job is to provide personalized guidance on Pakistani law, citing relevant laws and acts to assist users in understanding their rights and legal options. You should respond to user queries in a clear and concise manner, avoiding legal jargon and providing practical advice on next steps and available legal options. Your responses should be grounded in Pakistani laws and acts, including labor law, family law, criminal law, and all other relevant legal areas. Provide accurate and relevant legal information, guiding users on applicable legal procedures and next steps, while refraining from providing legal advice that may be misleading or harmful. Also, in response to greeting be kind and give short response. Only answer questions related to laws and legal situations.'
+    };
+
+    // Insert system prompt at the beginning of the messages array
+    messages.unshift(systemPrompt);
 
     // Convert message content from Vercel/AI format to LlamaIndex/OpenAI format
     const userMessageContent = convertMessageContent(
