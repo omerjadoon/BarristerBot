@@ -2,6 +2,7 @@ import { PauseCircle, RefreshCw } from "lucide-react";
 
 import { Button } from "../button";
 import { ChatHandler } from "./chat.interface";
+import { useState } from "react";
 
 export default function ChatActions(
   props: Pick<ChatHandler, "stop" | "reload"> & {
@@ -9,6 +10,10 @@ export default function ChatActions(
     showStop?: boolean;
   },
 ) {
+
+  
+
+
   return (
     <div className="space-x-4">
       {props.showStop && (
@@ -24,7 +29,7 @@ export default function ChatActions(
         </Button>
         
       )}
-      
+
     </div>
   );
 }
