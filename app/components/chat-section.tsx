@@ -1,7 +1,7 @@
 "use client";
 
 import { useChat } from "ai/react";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { insertDataIntoMessages } from "./transform";
 import { ChatInput, ChatMessages } from "./ui/chat";
 
@@ -22,12 +22,14 @@ export default function ChatSection() {
     },
   });
 
+  const [isListening, setIsListening] = useState(false);
+
   const transformedMessages = useMemo(() => {
     return insertDataIntoMessages(messages, data);
   }, [messages, data]);
 
   return (
-    <div className="space-y-4 w-4/6 ">
+    <div className="space-y-4  ">
       <ChatMessages
         messages={transformedMessages}
         isLoading={isLoading}
@@ -41,6 +43,10 @@ export default function ChatSection() {
         isLoading={isLoading}
         multiModal={process.env.NEXT_PUBLIC_MODEL === "gpt-4-vision-preview"}
       />
+      {/* <button onClick={() => setIsListening(prev => !prev)}>
+            {isListening ? 'Stop' : 'Listen'}
+        </button> */}
+        
     </div>
   );
 }

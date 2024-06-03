@@ -33,7 +33,7 @@ export default function SideSection() {
   const [transcript, setTranscript] = useState('');
 
   return (
-    <div className="space-y-4 w-2/6">
+    <div className="space-y-4 w-2/6 ">
       
       
       <a
@@ -52,8 +52,8 @@ export default function SideSection() {
 
         <h1>Let's talk law. Tell BarristerBot what's happening.</h1>
         {/* <TextToSpeech initialText={text} /> */}
-        <SpeechToText onTranscript={setTranscript} />
-            <TextToSpeech initialText={transcript} />
+        {/* <SpeechToText onTranscript={setTranscript} />
+            <TextToSpeech initialText={transcript} /> */}
     </div>
   );
 }

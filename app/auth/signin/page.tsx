@@ -1,3 +1,5 @@
+"use client";
+
 import Divider from "../../components/Divider";
 import LoginForm from "../../components/LoginForm";
 import LoginButton from "../../components/buttons/LoginButton";

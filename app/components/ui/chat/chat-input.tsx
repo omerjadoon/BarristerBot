@@ -73,31 +73,10 @@ export default function ChatInput(
 
   const onRemovePreviewImage = () => setImageUrl(null);
 
-  const handleUploadImageFile = async (file: File) => {
-    const base64 = await new Promise<string>((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result as string);
-      reader.onerror = (error) => reject(error);
-    });
-    setImageUrl(base64);
-  };
-
-  const handleUploadFile = async (file: File) => {
-    try {
-      if (props.multiModal && file.type.startsWith("image/")) {
-        return await handleUploadImageFile(file);
-      }
-      props.onFileUpload?.(file);
-    } catch (error: any) {
-      props.onFileError?.(error.message);
-    }
-  };
-
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-xl bg-white p-4 shadow-xl space-y-4"
+      className="rounded-xl bg-white  dark:bg-blue-950 dark:text-white p-4 shadow-xl space-y-4"
     >
       {imageUrl && (
         <UploadImagePreview url={imageUrl} onRemove={onRemovePreviewImage} />
@@ -116,9 +95,9 @@ export default function ChatInput(
           onFileError={props.onFileError}
         /> */}
 
-        <button onClick={() => setIsListening(prev => !prev)}>
-            {isListening ? 'Stop Listening' : 'Start Listening'}
-        </button>
+        {/* <button onClick={() => setIsListening(prev => !prev)}>
+            {isListening ? 'Stop' : 'Listen'}
+        </button> */}
 
         <Button type="submit" disabled={props.isLoading}>
           Send message

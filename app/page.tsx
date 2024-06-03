@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import GoogleButton from "./components/buttons/GoogleButton";
 import LoginButton from "./components/buttons/LoginButton";
 import LogoutButton from "./components/buttons/LogoutButton";
+import ToggleButton from "./components/buttons/ToggleButton";
 
 export default async function Home() {
   const session = (await getServerSession()) || {};
@@ -17,7 +18,7 @@ export default async function Home() {
     <main className="flex min-h-screen flex-col items-center justify-around p-8 lg:p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-end font-mono text-sm lg:flex">
         <div className="flex h-48 w-full items-center justify-between bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:bg-none">
-          
+          <ToggleButton/>
           <div className="px-2"></div>
           {Object.keys(session).length === 0 ? (
             <LoginButton />

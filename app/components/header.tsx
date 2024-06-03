@@ -15,7 +15,10 @@ export default function Header() {
            
           </a>
           <h2 className="flex flex-col p-5">Your rights, on demand.</h2>
+          <div className="flex flex-col">Dark</div>
+          
           <div className="flex flex-col right-0 items-end">
+            
           <LogoutButton />
           </div>
         </div>
