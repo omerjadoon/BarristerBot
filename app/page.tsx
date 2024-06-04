@@ -34,7 +34,7 @@ export default async function Home() {
             width={300}
             height={300}
           />
-      <h2 className="text-3xl font-bold text-center mb-8 lg:mb-0">
+      <h2 className="text-3xl font-bold text-center mb-9 lg:mb-0">
         Know your rights, fight the fights.
       </h2>
 
