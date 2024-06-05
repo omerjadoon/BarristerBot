@@ -52,7 +52,7 @@ export default async function Home() {
         <div className="space-y-2 mt-3">
         
        
-          <h3>Key Features</h3>
+          <h3 className="font-bold">Key Features</h3>
           <li>LLM & RAG Based Chatbot</li>
           <li>Dynamic Knowledge Base</li>
           <li>Cost-Effective Legal Assistance</li>
@@ -68,7 +68,7 @@ export default async function Home() {
               <img src="/bot_logo.png" className="w-14 mr-4 rounded-full" alt="Barristerbot" />
               Ask Me about your legal problem?
             </div>
-            <div className="ml-auto sm:flex hidden items-center justify-end">
+            <div className="ml-auto sm:flex  items-center justify-end">
               <div className="text-right">
                 <div className="text-xs text-gray-400 dark:text-gray-400"></div>
                
