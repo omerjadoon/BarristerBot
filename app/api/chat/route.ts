@@ -26,6 +26,29 @@ const convertMessageContent = (
   ];
 };
 
+const maskPII = async (text: string): Promise<string> => {
+  try {
+    const response = await fetch('https://barristerbotmasking.vercel.app/mask', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ text }),
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+      return data.masked_text;
+    } else {
+      console.error('Error masking text:', data.error);
+      return text;
+    }
+  } catch (error) {
+    console.error('Error making request to mask PII:', error);
+    return text;
+  }
+};
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -67,9 +90,12 @@ export async function POST(request: NextRequest) {
     // Insert system prompt at the beginning of the messages array
     messages.unshift(systemPrompt);
 
+    // Mask PII in the user's message
+    const maskedUserMessageContent = await maskPII(userMessage.content);
+
     // Convert message content from Vercel/AI format to LlamaIndex/OpenAI format
     const userMessageContent = convertMessageContent(
-      userMessage.content,
+      maskedUserMessageContent,
       data?.imageUrl
     );
 

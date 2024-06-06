@@ -125,6 +125,7 @@ export default  function Future() {
 
                 <li>Chat History</li>
                 <li>Emoji based Feedback to improve RAG and option to flag Bias Output.</li>
+                <li>Further Improve PII Masking for maximum privacy</li>
               </div>
         
         </div>

@@ -7,9 +7,21 @@ import LogoutButton from "../components/buttons/LogoutButton";
 import ToggleButton from "../components/buttons/ToggleButton";
 import Link from "next/link";
 
+import { maskPassword, PasswordMaskOptions } from 'maskdata';
+
 
 export default async function Disclaimer() {
   const session = await getServerSession();
+
+  const password: string = '0335 myPassword123';
+const options: PasswordMaskOptions = {
+  maskWith: '*',
+  maxMaskedCharacters: 10,
+  unmaskedStartCharacters: 2,
+  unmaskedEndCharacters: 2
+};
+
+const maskedPassword = maskPassword(password, options);
   return (
     <main className=" w-full">
       
@@ -120,6 +132,8 @@ export default async function Disclaimer() {
         <p>By using BarristerBot, you acknowledge and agree to this disclaimer and accept that the use of the app is at your own risk. If you have any questions or concerns, please do not hesitate to contact us for further clarification.</p>
 
         <p>Thank you for using BarristerBot.</p>
+
+        
         </div>
       </div>
     </div>
