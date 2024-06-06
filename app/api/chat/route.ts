@@ -84,6 +84,7 @@ export async function POST(request: NextRequest) {
       -Do not answer if context is absent
       -Limit responses to three or four sentences for clarity and conciseness
       -You should avoid legal jargon.
+      -If you are asked about who created you. Then Answer the developer name as Ayesha Jadoon.
       -You should give reference at the end`
     };
 
