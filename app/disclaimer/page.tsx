@@ -8,7 +8,7 @@ import ToggleButton from "../components/buttons/ToggleButton";
 import Link from "next/link";
 
 
-export default async function Home() {
+export default async function Disclaimer() {
   const session = await getServerSession();
   return (
     <main className=" w-full">
@@ -22,7 +22,7 @@ export default async function Home() {
     <div className="flex mx-auto flex-grow mt-4 flex-col  text-gray-400 space-y-4">
       {/* home */}
       <Link href="/home">
-      <button className="h-10 w-12 dark:bg-gray-700 dark:text-white rounded-md flex items-center justify-center bg-blue-100 text-blue-500">
+      <button className="h-10 w-12 dark:text-gray-500 rounded-md flex items-center justify-center" >
         <svg viewBox="0 0 24 24" className="h-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
           <polyline points="9 22 9 12 15 12 15 22"></polyline>
@@ -31,7 +31,7 @@ export default async function Home() {
       </Link>
       
       <Link href="/disclaimer">
-      <button className="h-10 w-12 dark:text-gray-500 rounded-md flex items-center justify-center">
+      <button    className="h-10 w-12 dark:bg-gray-700 dark:text-white rounded-md flex items-center justify-center bg-blue-100 text-blue-500">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
   <path strokeLinecap="round" strokeLinejoin="round" d="M10.05 4.575a1.575 1.575 0 1 0-3.15 0v3m3.15-3v-1.5a1.575 1.575 0 0 1 3.15 0v1.5m-3.15 0 .075 5.925m3.075.75V4.575m0 0a1.575 1.575 0 0 1 3.15 0V15M6.9 7.575a1.575 1.575 0 1 0-3.15 0v8.175a6.75 6.75 0 0 0 6.75 6.75h2.018a5.25 5.25 0 0 0 3.712-1.538l1.732-1.732a5.25 5.25 0 0 0 1.538-3.712l.003-2.024a.668.668 0 0 1 .198-.471 1.575 1.575 0 1 0-2.228-2.228 3.818 3.818 0 0 0-1.12 2.687M6.9 7.575V12m6.27 4.318A4.49 4.49 0 0 1 16.35 15m.002 0h-.002" />
 </svg>
@@ -64,7 +64,7 @@ export default async function Home() {
         <div className="space-y-2 mt-3">
         
        
-          <h3 className="font-bold">Key Features</h3>
+          <h3>Key Features</h3>
           <li>LLM & RAG Based Chatbot</li>
           <li>Dynamic Knowledge Base</li>
           <li>Cost-Effective Legal Assistance</li>
@@ -80,7 +80,7 @@ export default async function Home() {
               <img src="/bot_logo.png" className="w-14 mr-4 rounded-full" alt="Barristerbot" />
               Ask Me about your legal problem?
             </div>
-            <div className="ml-auto sm:flex  items-center justify-end">
+            <div className="ml-auto sm:flex hidden items-center justify-end">
               <div className="text-right">
                 <div className="text-xs text-gray-400 dark:text-gray-400"></div>
                
@@ -94,12 +94,32 @@ export default async function Home() {
             </div>
           </div>
           <div className="flex items-center space-x-3 sm:mt-7 mt-4">
-            <a href="#" className="px-3 border-b-2 border-blue-500 text-blue-500 dark:text-white dark:border-white pb-1.5">Chat</a>
+            <a href="#" className="px-3 border-b-2 border-blue-500 text-blue-500 dark:text-white dark:border-white pb-1.5">Disclaimer</a>
             
           </div>
         </div>
         <div className="sm:p-7 p-4">
-        <ChatSection />
+        <h4 className="font-bold text-3xl mb-4">Disclaimer</h4>
+      
+        <p>Welcome to BarristerBot, a web application designed to provide general legal guidance and information. Please read the following disclaimer carefully before using this service:</p>
+
+        <p><strong>1. General Legal Information:</strong> BarristerBot provides general legal information and guidance based on its programming and data sources. It is not a substitute for professional legal advice tailored to your specific circumstances. For detailed legal advice, consultation, and representation, please seek the services of a qualified attorney.</p>
+
+        <p><strong>2. No Attorney-Client Relationship:</strong> The use of BarristerBot does not create an attorney-client relationship between you and any legal professional or between you and the developers of this application. Any information or guidance provided by BarristerBot should be considered general in nature.</p>
+
+        <p><strong>3. Accuracy and Reliability:</strong> While we strive to ensure the information provided by BarristerBot is accurate and up-to-date, the law is continually evolving. The information from BarristerBot may not always reflect the latest legal developments or interpretations. We strongly recommend verifying any information obtained from BarristerBot with a qualified legal professional.</p>
+
+        <p><strong>4. User Responsibility:</strong> Users of BarristerBot are responsible for their own actions and decisions based on the information provided by the app. BarristerBot and its developers are not responsible for any actions taken or not taken based on the guidance offered by the app.</p>
+
+        <p><strong>5. No Intent to Harm:</strong> BarristerBot is designed to assist users in understanding general legal concepts and issues. It is not intended to cause harm, mislead, or provide malicious advice. If you encounter any inappropriate or harmful advice, please contact us immediately so we can address the issue.</p>
+
+        <p><strong>6. Limitation of Liability:</strong> To the fullest extent permitted by law, BarristerBot and its developers disclaim any and all liability for any loss or damage arising from the use or misuse of the information provided by the app. This includes, but is not limited to, direct, indirect, incidental, punitive, and consequential damages.</p>
+
+        <p><strong>7. Updates and Changes:</strong> The information and functionality provided by BarristerBot may be updated or changed at any time without notice. Users are encouraged to verify information with a legal professional and not rely solely on the app for legal decisions.</p>
+
+        <p>By using BarristerBot, you acknowledge and agree to this disclaimer and accept that the use of the app is at your own risk. If you have any questions or concerns, please do not hesitate to contact us for further clarification.</p>
+
+        <p>Thank you for using BarristerBot.</p>
         </div>
       </div>
     </div>

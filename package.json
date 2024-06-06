@@ -17,6 +17,7 @@
     "clsx": "^1.2.1",
     "crypto-js": "^4.2.0",
     "dotenv": "^16.3.1",
+    "framer-motion": "^11.2.10",
     "graphql": "^16.8.1",
     "graphql-request": "^7.0.1",
     "llamaindex": "0.0.50",
