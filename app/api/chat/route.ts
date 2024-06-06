@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
       -Do not introduce examples outside of the context
       -Do not answer if context is absent
       -Limit responses to three or four sentences for clarity and conciseness
-      -You should avoid legal jargon and provide practical advice.
+      -You should avoid legal jargon.
       -You should give reference at the end`
     };
 
